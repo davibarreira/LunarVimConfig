@@ -3,8 +3,9 @@ vim.cmd("let g:latex_to_unicode_tab = 'off'")
 vim.cmd("let g:latex_to_unicode_keymap = 1")
 vim.opt.wrap = true -- display lines as one long line
 vim.opt.spelllang = "en" -- default spell check language
-lvim.keys.normal_mode["<A-S-e>"] = ":set spelllang=en<CR>"
-lvim.keys.visual_mode["<A-S-p>"] = ":set spelllang=pt_br<CR>"
+lvim.keys.normal_mode["<F2>"] = ":set spell!<CR>" -- toggle spell check 
+lvim.keys.normal_mode["<F4>"] = ":set spelllang=en<CR>"
+lvim.keys.normal_mode["<F3>"] = ":set spelllang=pt_br<CR>"
 
 -- vim.cmd("let g:floaterm_keymap_new = '<C-j>'")
 
@@ -125,11 +126,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Additional Plugins
 lvim.plugins = {
     {"folke/tokyonight.nvim"},
-    -- {
-    --     "ray-x/lsp_signature.nvim",
-    --     config = function() require"lsp_signature".on_attach() end,
-    --     event = "InsertEnter"
-    -- },
+    {
+        "ray-x/lsp_signature.nvim",
+        config = function() require"lsp_signature".on_attach() end,
+        event = "InsertEnter"
+    },
     {"KeitaNakamura/neodark.vim"},
     {"rakr/vim-one"},
     {"joshdick/onedark.vim"},
