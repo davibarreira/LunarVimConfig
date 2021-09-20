@@ -1,3 +1,9 @@
+-- IMPORTANT TO REMEMBER
+-- When inside the terminal, one can go into normal mode
+-- by pressing <C-\><C-n>. This command is actually
+-- native from Neovim.
+
+
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 vim.cmd("let g:latex_to_unicode_tab = 'off'")
 vim.cmd("let g:latex_to_unicode_keymap = 1")
