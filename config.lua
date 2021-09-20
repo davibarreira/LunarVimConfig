@@ -3,6 +3,26 @@
 -- by pressing <C-\><C-n>. This command is actually
 -- native from Neovim.
 
+-- Latex configuration
+-- The snippets from Latex are inside the file
+-- /~/.local/share/lunarvim/site/pack/packer/start/latex.json
+-- The following snippets were deleted:
+-- "nonumber": {
+-- 	"prefix": "@,",
+-- 	"body": "\\nonumber",
+-- 	"description": "nonumber"
+-- },
+-- "etc": {
+--   "prefix": "...",
+--   "body": "\\dots",
+--   "description": "\\dots"
+-- },
+-- "cdot": {
+--   "prefix": "@.",
+--   "body": "\\cdot",
+--   "description": "\\cdot"
+-- },
+
 
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 vim.cmd("let g:latex_to_unicode_tab = 'off'")
