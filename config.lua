@@ -23,7 +23,6 @@
 --   "description": "\\cdot"
 -- },
 
-
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
 vim.cmd("let g:latex_to_unicode_tab = 'off'")
 vim.cmd("let g:latex_to_unicode_keymap = 1")
@@ -190,9 +189,18 @@ lvim.plugins = {
     },
     {"rafi/awesome-vim-colorschemes"},
     {"voldikss/vim-floaterm"},
+    {
+    -- Plugin for quickly changing parenthesis, brackets and others
+      "tpope/vim-surround",
+      keys = {"c", "d", "y"}
+    },
+    -- Plugin for autoparing parenthesis and others
+    -- {"windwp/nvim-autopairs"}
 }
 
+
+
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
--- lvim.autocommands.custom_groups = {
---   { "BufWinEnter", "*.lua", "setlocal ts=8 sw=8" },
--- }
+lvim.autocommands.custom_groups = {
+  { "BufWinEnter", "*", ":PackerLoad nvim-autopairs" },
+}
