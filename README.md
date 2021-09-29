@@ -112,3 +112,9 @@ autocompletes every time you press Enter. Thus,
 one can manually disable them by going to
 `/.local/share/lunarvim/site/pack/packer/start/latex.json`
 and commenting out the referred snippet.
+
+When enabling autopairs, another annoying configuration is the completion for '$'
+which doesn't allow you to properly delete the dollar sign.
+You can go to
+`~/.local/share/lunarvim/lvim/lua/core/autopairs.lua`, and comment
+the line `:with_del(cond.not_after_regex_check "xx") -- disable  add newline when press <cr>`.
