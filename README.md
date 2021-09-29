@@ -110,7 +110,7 @@ when altering `latex` files, there will be
 snippets to things like `.` or `,`, which
 autocompletes every time you press Enter. Thus,
 one can manually disable them by going to
-`/.local/share/lunarvim/site/pack/packer/start/latex.json`
+`~/.local/share/lunarvim/site/pack/packer/start/friendly-snippets/snippets`
 and commenting out the referred snippet.
 
 When enabling autopairs, another annoying configuration is the completion for '$'
