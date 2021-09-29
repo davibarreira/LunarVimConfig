@@ -101,3 +101,14 @@ You can now read the documentation on LunarVim to better understand some of the 
 * Lastly, you can press ctrl+t to open and minimize a floating terminal. Once this is done, you can run the Julia REPL and copy/paste every line of code you want to run.
 
 There are many other helpful commands. Check-out the documentation on LunarVim or try them out by yourself to learn more. Hope this was helpful.
+
+### *EXTRA*
+Some extra notes on the configuration.
+Lsp comes with several pre-set configurations, which
+might be quite annoying. For example,
+when altering `latex` files, there will be
+snippets to things like `.` or `,`, which
+autocompletes every time you press Enter. Thus,
+one can manually disable them by going to
+`/.local/share/lunarvim/site/pack/packer/start/latex.json`
+and commenting out the referred snippet.
