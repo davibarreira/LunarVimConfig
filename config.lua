@@ -24,6 +24,9 @@
 -- },
 
 -- THESE ARE EXAMPLE CONFIGS FEEL FREE TO CHANGE TO WHATEVER YOU WANT
+-- vim.cmd("let g:vimtex_compiler_latexmk = {'continuous' : 0}")
+lvim.keys.normal_mode["<F6>"] = ":VimtexCompile<CR>" -- toggle spell check 
+
 vim.cmd("let g:latex_to_unicode_tab = 'off'")
 vim.cmd("let g:latex_to_unicode_keymap = 1")
 vim.opt.wrap = true -- display lines as one long line
@@ -133,6 +136,15 @@ lvim.builtin.treesitter.highlight.enabled = true
 --   end
 -- end
 
+require'lspconfig'.julials.setup{
+    on_new_config = function(new_config, _)
+        local julia = vim.fn.expand("~/.julia/environments/nvim-lspconfig/bin/julia")
+        if require'lspconfig'.util.path.is_file(julia) then
+            new_config.cmd[1] = julia
+        end
+    end
+}
+
 -- set a formatter if you want to override the default lsp one (if it exists)
 -- lvim.lang.python.formatters = {
 --   {
@@ -151,11 +163,11 @@ lvim.builtin.treesitter.highlight.enabled = true
 -- Additional Plugins
 lvim.plugins = {
     {"folke/tokyonight.nvim"},
-    {
-        "ray-x/lsp_signature.nvim",
-        config = function() require"lsp_signature".on_attach() end,
-        event = "InsertEnter"
-    },
+    -- {
+    --     "ray-x/lsp_signature.nvim",
+    --     config = function() require"lsp_signature".on_attach() end,
+    --     event = "InsertEnter"
+    -- },
     {"KeitaNakamura/neodark.vim"},
     {"rakr/vim-one"},
     {"joshdick/onedark.vim"},
@@ -194,6 +206,7 @@ lvim.plugins = {
       "tpope/vim-surround",
       keys = {"c", "d", "y"}
     },
+    {"tpope/vim-eunuch"}
     -- Plugin for autoparing parenthesis and others
     -- {"windwp/nvim-autopairs"}
 }
@@ -203,4 +216,5 @@ lvim.plugins = {
 -- Autocommands (https://neovim.io/doc/user/autocmd.html)
 lvim.autocommands.custom_groups = {
   { "BufWinEnter", "*", ":PackerLoad nvim-autopairs" },
+  { "BufWinEnter", "*.tex", "setlocal ts=2 sw=2" },
 }
