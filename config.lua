@@ -27,6 +27,9 @@
 -- vim.cmd("let g:vimtex_compiler_latexmk = {'continuous' : 0}")
 lvim.keys.normal_mode["<F6>"] = ":VimtexCompile<CR>" -- toggle spell check 
 
+-- DAVI - this is here to block the autocompletion on Latex to run after pressing Enter.
+lvim.builtin.cmp.confirm_opts.select = false
+
 vim.cmd("let g:latex_to_unicode_tab = 'off'")
 vim.cmd("let g:latex_to_unicode_keymap = 1")
 vim.opt.wrap = true -- display lines as one long line

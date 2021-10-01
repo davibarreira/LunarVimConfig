@@ -108,13 +108,21 @@ Lsp comes with several pre-set configurations, which
 might be quite annoying. For example,
 when altering `latex` files, there will be
 snippets to things like `.` or `,`, which
-autocompletes every time you press Enter. Thus,
-one can manually disable them by going to
-`~/.local/share/lunarvim/site/pack/packer/start/friendly-snippets/snippets`
-and commenting out the referred snippet.
+autocompletes every time you press Enter.
+Thus, this configuration line
+`lvim.builtin.cmp.confirm_opts.select = false`
+alters this behaviour to leave Enter as "skip line" as default.
+
+<!-- one can manually disable them by going to -->
+<!-- `~/.local/share/lunarvim/site/pack/packer/start/friendly-snippets/snippets` -->
+<!-- and commenting out the referred snippet. -->
 
 When enabling autopairs, another annoying configuration is the completion for '$'
 which doesn't allow you to properly delete the dollar sign.
 You can go to
 `~/.local/share/lunarvim/lvim/lua/core/autopairs.lua`, and comment
 the line `:with_del(cond.not_after_regex_check "xx") -- disable  add newline when press <cr>`.
+Note that autopairs also causes problems with the previous configuration
+line that fixes the autocompletion on Latex. You might wish to not use autopairs all together,
+or (as I  did), comment the lines related to Latex and the Enter autocompletion on autopairs.
+My modified `autopairs.lua` can be found in this GitHub repo.
