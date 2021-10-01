@@ -102,7 +102,7 @@ You can now read the documentation on LunarVim to better understand some of the 
 
 There are many other helpful commands. Check-out the documentation on LunarVim or try them out by yourself to learn more. Hope this was helpful.
 
-### More on Julia
+## More on Julia
 
 ### LSP Instatiation
 There are some extra information necessary to properly setup Julia with Neovim.
@@ -121,6 +121,35 @@ load based on you global configuration, which will probably be on
 `~/.julia/environments/v1.6/` (if you are using v1.6).
 You can check from where your LSP is loading by looking the file `~/.cache/nvim/lsp.log`,
 which will show what's running.
+
+### Speed-up the LSP loading time
+You might note that takes some annoying seconds for the LSP to start with Julia.
+This can be improved with a compiled image via `PackageCompiler`. This method
+is due to (Fredrik Ekre)[https://github.com/fredrikekre].
+
+First, we must add the following lines inside our `~/.config/lvim/config.lua`:
+```lua
+require'lspconfig'.julials.setup{
+    on_new_config = function(new_config, _)
+        local julia = vim.fn.expand("~/.julia/environments/nvim-lspconfig/bin/julia")
+        if require'lspconfig'.util.path.is_file(julia) then
+            new_config.cmd[1] = julia
+        end
+    end
+}
+```
+This is telling our LSP to run from `~/.julia/environments/nvim-lspconfig/bin/julia`.
+At the moment, there is nothing in this location. But the next steps will
+create an image and the Julia executable to run this image.
+
+Inside the folder `~/.julia/environments/nvim-lspconfig/`, create the file
+`Makefile` as the one inside this Github repository (the file is inside the `speed-lsp` folder).
+Then, move  inside the `~/.julia/environments/nvim-lspconfig/` folder and run `make` command.
+At some point some Julia example code will open inside your terminal. Just save and close the
+file. After that, just wait for the image to be created. You are done!
+Now your LSP should be loading almost immediately. Although, it might take some time
+for the autocompletion on packages to work. The time of loading will depend on how
+many packages you have installed in your environment.
 
 <!-- You can check this by pressing Space, then "l" and then "i" (once you -->
 <!-- press Space, the menu will show up. You have to navigate to "LSP" and then "Info"). -->
