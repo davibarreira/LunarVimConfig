@@ -102,7 +102,37 @@ You can now read the documentation on LunarVim to better understand some of the 
 
 There are many other helpful commands. Check-out the documentation on LunarVim or try them out by yourself to learn more. Hope this was helpful.
 
-### *EXTRA*
+### More on Julia
+
+### LSP Instatiation
+There are some extra information necessary to properly setup Julia with Neovim.
+Besides the command to install the LanguageServer, as shown below:
+```
+julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer")'
+```
+It's important to point out that the LSP will load the information
+on packages based on the project you are in. For example, if you
+create a directory `MyCode/`, with a `Project.toml` and a `Manifest.toml` file,
+then the LSP will load only the autocompletion and documentation
+for packages installed in this environment.
+
+If no environment project is found, the LSP will probably
+load based on you global configuration, which will probably be on
+`~/.julia/environments/v1.6/` (if you are using v1.6).
+You can check from where your LSP is loading by looking the file `~/.cache/nvim/lsp.log`,
+which will show what's running.
+
+<!-- You can check this by pressing Space, then "l" and then "i" (once you -->
+<!-- press Space, the menu will show up. You have to navigate to "LSP" and then "Info"). -->
+<!-- Once you do this, the information on the LSP will  -->
+
+## *EXTRA*
+
+### Using Latex on LunarVim
+
+Besides Julia, you might want to write Latex with LunarVim.
+To do so, install the `vimtex` plugin (it's already in the configurations).
+
 Some extra notes on the configuration.
 Lsp comes with several pre-set configurations, which
 might be quite annoying. For example,
@@ -126,3 +156,15 @@ Note that autopairs also causes problems with the previous configuration
 line that fixes the autocompletion on Latex. You might wish to not use autopairs all together,
 or (as I  did), comment the lines related to Latex and the Enter autocompletion on autopairs.
 My modified `autopairs.lua` can be found in this GitHub repo.
+
+### Useful shortcuts
+It's not always clear every shortcut you might need. Here is a list
+of some unusual yet useful shortcuts:
+
+#### Floating terminal
+* `Ctrl+\+n` - When inside the floating terminal, if you press this you will go to Normal mode;
+
+
+#### Latex
+* `\+l` - When in a Latex file, the `\` is what `vimtex` calls `<localleader>`. The `\+l` is the default shortcut to many of `vimtex`commands;
+* `\+l+e` - This runs the `:VimtexErros` which toggles the bottom menu that pops-up when compiling the Latex script;
