@@ -197,3 +197,21 @@ of some unusual yet useful shortcuts:
 #### Latex
 * `\+l` - When in a Latex file, the `\` is what `vimtex` calls `<localleader>`. The `\+l` is the default shortcut to many of `vimtex`commands;
 * `\+l+e` - This runs the `:VimtexErros` which toggles the bottom menu that pops-up when compiling the Latex script;
+
+
+### Spell checks
+By default, the spell check is probably disabled. You can start
+it by running the command `:set spell`. In the configuration file,
+I created a shortcut using `<F2>`, so pressing F2 will
+either enable or disable the spelling check. Besides
+English, you might be interested in having spelling using
+other languages. In my case, I added support for
+Portuguese.
+
+I've downloaded the file `pt.utf-8.spl` from
+`http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl`
+and placed the file inside `~/.local/share/nvim/site/spell`.
+Using the command `:set spelllang=pt`, you change
+the language to Portuguese. Again, in the configurations
+I added the shortcut `<F3>` for Portuguese and `<F4>`
+for English. Hence, you can quickly change between both.
