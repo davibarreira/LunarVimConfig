@@ -52,6 +52,16 @@ Inside the configuration, there is a place where you can easily install any plug
 
 This is what your configuration should look like to install Julia-Vim. Note that you can add any other plugins you like.
 
+(*update for new LunarVim 0.6*)
+
+Finally, you have to create a file `~/.config/lvim/ftplugin/julia.lua` with the following line to start the language server when opening Julia files.
+```lua
+local opts = {} 
+-- re-use common lsp configurations (keybindings, buffer-highlight and cmp integration)
+opts = require("lvim.lsp").get_common_opts() 
+require('lspconfig').julials.setup(opts)
+```
+
 **Word of Caution!**
 
 Since Vim is inside your terminal, you need your terminal to have a font with Unicode enabled. I suggest you install JuliaMono, a beautiful font created for Julia :D. Once the font is installed, just go into your terminal configuration and change to it.
