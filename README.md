@@ -88,7 +88,9 @@ You can now read the documentation on LunarVim to better understand some of the 
 
 ![LunarVim](./figures/lunarmenu.png)
 
-* LunarVim comes with "NerdCommenter" plugin, which allows you to navigate with a menu. Just press <space>+e .
+* LunarVim comes with "NerdCommenter" plugin, which allows you to navigate with a menu. Just press `<space>+e`;
+* In the "NerdCommenter" in normal mode, press `<shift>+r` to reload the navigation menu, hence, any new created file will now show;
+* Press `d` to delete the file under the cursor, `y` to copy it, and `a` to create ("append") a new file.
 
 ![LunarVim](./figures/bufferlunar.png)
 
@@ -109,6 +111,9 @@ You can now read the documentation on LunarVim to better understand some of the 
 ![LunarVim](./figures/repljulia.png)
 
 * Lastly, you can press ctrl+t to open and minimize a floating terminal. Once this is done, you can run the Julia REPL and copy/paste every line of code you want to run.
+
+* Press `<space>+f+t` to search for a text in any files in the file tree;
+* Press `<space>+l+p+d` to open the docstring for a function (**very useful**).
 
 There are many other helpful commands. Check-out the documentation on LunarVim or try them out by yourself to learn more. Hope this was helpful.
 
