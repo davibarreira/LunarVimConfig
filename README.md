@@ -113,7 +113,8 @@ You can now read the documentation on LunarVim to better understand some of the 
 * Lastly, you can press ctrl+t to open and minimize a floating terminal. Once this is done, you can run the Julia REPL and copy/paste every line of code you want to run.
 
 * Press `<space>+f+t` to search for a text in any files in the file tree;
-* Press `<space>+l+p+d` to open the docstring for a function (**very useful**).
+* Press `<space>+l+p+d` to open the docstring for a function;
+* Press `shift + k` to also open the documentation (**very useful**).
 
 There are many other helpful commands. Check-out the documentation on LunarVim or try them out by yourself to learn more. Hope this was helpful.
 
