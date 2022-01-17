@@ -186,9 +186,17 @@ line that fixes the autocompletion on Latex. You might wish to not use autopairs
 or (as I  did), comment the lines related to Latex and the Enter autocompletion on autopairs.
 My modified `autopairs.lua` can be found in this GitHub repo.
 
+One might be interested in using different compilation
+engines for Latex. For example, you might want to use lualatex.
+For this, write `%! TeX program = lualatex` in the top of the main Latex file.
+Then, `vimtex` will use lualatex.
+
 ### Useful shortcuts
 It's not always clear every shortcut you might need. Here is a list
 of some unusual yet useful shortcuts:
+
+#### Coding
+* `Shift + k` - Opens the documentation for a function;
 
 #### Floating terminal
 * `Ctrl+\+n` - When inside the floating terminal, if you press this you will go to Normal mode;
@@ -198,6 +206,11 @@ of some unusual yet useful shortcuts:
 * `\+l` - When in a Latex file, the `\` is what `vimtex` calls `<localleader>`. The `\+l` is the default shortcut to many of `vimtex`commands;
 * `\+l+e` - This runs the `:VimtexErros` which toggles the bottom menu that pops-up when compiling the Latex script;
 
+#### Explorer - NerdTree
+* `shift+r` inside the explorer - Updates the explorer to show changes that happened, such as new files and folders;
+* `a` inside the explorer - Creates new file;
+* `d` inside the explorer - Deletes file;
+* `r` inside the explorer - Renames file.
 
 ### Spell checks
 By default, the spell check is probably disabled. You can start
@@ -208,6 +221,7 @@ English, you might be interested in having spelling using
 other languages. In my case, I added support for
 Portuguese.
 
+(Not working for some reason)
 I've downloaded the file `pt.utf-8.spl` from
 `http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl`
 and placed the file inside `~/.local/share/nvim/site/spell`.
