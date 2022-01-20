@@ -237,11 +237,25 @@ English, you might be interested in having spelling using
 other languages. In my case, I added support for
 Portuguese.
 
-(Not working for some reason)
+(Working method)
+Besides the shortcuts, you'll need to download the `.spl` file for your native language.
+For example, if you want to install the portuguese spell checker, then just
+enter into LunarVim and use the command `:set spelllang=pt`. Once you do this, LunarVim
+will check whether you have the `.spl` file, and in case you don't have it, it will ask
+whether you want to download it. Just accept it and wait for the download. The file will
+be saved at `~/.local/share/nvim/runtime/spell/`. You might get a message saying that
+the download failed, but check the folder, cause it might actually have worked.
+Once this is done, you are ready.
+In the configurations I added the shortcut `<F3>` for Portuguese and `<F4>`
+for English. Hence, you can quickly change between both, while `<F2>` toggles the spell checker.
+
+
+(Old)
 I've downloaded the file `pt.utf-8.spl` from
 `http://ftp.vim.org/pub/vim/runtime/spell/pt.utf-8.spl`
 and placed the file inside `~/.local/share/nvim/site/spell`.
 Using the command `:set spelllang=pt`, you change
-the language to Portuguese. Again, in the configurations
+the language to Portuguese. Again,
+in the configurations
 I added the shortcut `<F3>` for Portuguese and `<F4>`
 for English. Hence, you can quickly change between both.
