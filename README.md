@@ -1,4 +1,4 @@
-# LunarVimConfig
+ LunarVimConfig
 
 This repo contains my configuration for
 [LunarVim](https://www.lunarvim.org/).
@@ -248,6 +248,10 @@ the download failed, but check the folder, cause it might actually have worked.
 Once this is done, you are ready.
 In the configurations I added the shortcut `<F3>` for Portuguese and `<F4>`
 for English. Hence, you can quickly change between both, while `<F2>` toggles the spell checker.
+If for some reason you still get that the files are missing,
+then try creating a `spell` folder at
+`/home/davibarreira/.local/share/lunarvim/site` and place the `.spl`
+files there.
 
 
 (Old)
