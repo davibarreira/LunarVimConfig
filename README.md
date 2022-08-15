@@ -1,4 +1,4 @@
- LunarVimConfig
+ # LunarVimConfig
 
 This repo contains my configuration for
 [LunarVim](https://www.lunarvim.org/).
