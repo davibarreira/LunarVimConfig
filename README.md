@@ -14,8 +14,29 @@ LunarVim and set it up for Julia.
 
 ![LunarVim](./figures/lunarvim.png)
 # Vim for Julia - Another Look
+
+#### UPDATES
+UPDATED - 14 September 2022
+VERSION: LunarVim Stable 1.1.4
+
+The `config.lua` file has been updated. The Julia LSP is now
+natively supported. So part of the previous tutorial
+has been removed, since it's not necessary anymore.
+
+LunarVim now comes with the `ToggleTerm` plugin, and this
+enables a very smooth integration between vim and the terminal.
+In my configuration file, I've modified the default behavior
+to open a terminal in a vertical split, and added some shortcuts,
+for example, `<ctrl> + b` sends the line current line in the vim
+file to the terminal opened via `<ctrl> + t`. Hence, one can
+easily write code and send commands to the REPL.
+The same works for sending several lines. Just select them using
+visual mode, and press `<ctrl> + b`.
+
 ## LunarVim as a Julia IDE
+
 In the past, I wrote on how to use Vim for Julia. Recently, I've changed my setup and I've been using the new and amazing LunarVim. Here is a brief tutorial on how to setup Vim (actually Neovim) as your Julia IDE.
+
 ### Introducing LunarVim
 The first question to be answered is, what is LunarVim? Presto!
 
@@ -37,45 +58,61 @@ By running the command lvim in your terminal, LunarVim should start! You can alw
 
 ### Setting up Julia
 
-Now that you've got LunarVim working, let's setup the Julia language. This is actually surprisingly simple. In your terminal, run the following:
+Julia is now supported natively, so there is no special installation.
+The only thing you need to do is to install the `julia-vim` plugin.
+To install, go to your `config.lua` file and add the `julia-vim`
+plugin into the `lvim.plugins` command. If you've just installed a fresh
+LunarVim, the `config.lua` will have a sample of `lvim.plugins` commented
+out. Just use it and place the `{ "JuliaEditorSupport/julia-vim" }` inside.
+It will look something like this:
 ```
-julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer")'
-```
-This installs the Language Server Protocol (LSP) for Julia, i.e. the auto-completion functionally for Julia. Now, every time you open a ".jl" file, just wait a bit and the LSP will start.
-
-Next, let's install the Julia-Vim package that will enable us using Unicode, thus, by writing something like \alpha and pressing tab, we'll get the alpha Unicode, which is allowed in Julia. To do this, go to your LunarVim configurations file, which can be accessed by running lvim in the terminal and selecting the Configuration option. Another way is to open the configuration file directly, which is ~/.config/lvim/config.lua .
-
-Inside the configuration, there is a place where you can easily install any plugin you want. Just navigate to where the "- - Additional Plugins" is. Originally, everything should be commented. Just uncomment the necessary lines, and write {"JuliaEditorSupport/julia-vim"} and save. This will prompt the installation of the plugging. Take a look at the figure below.
-
-
-![LunarVim](./figures/configlunar.png)
-
-This is what your configuration should look like to install Julia-Vim. Note that you can add any other plugins you like.
-
-(*update for new LunarVim 0.6*)
-
-Finally, you have to create a file `~/.config/lvim/ftplugin/julia.lua` with the following line to start the language server when opening Julia files.
-```lua
-local opts = {} 
--- re-use common lsp configurations (keybindings, buffer-highlight and cmp integration)
-opts = require("lvim.lsp").get_common_opts() 
-require('lspconfig').julials.setup(opts)
+-- Additional Plugins
+lvim.plugins = {
+    ...
+    { "JuliaEditorSupport/julia-vim" },
+    ...
+}
 ```
 
-**Word of Caution!**
+<!-- Now that you've got LunarVim working, let's setup the Julia language. This is actually surprisingly simple. In your terminal, run the following: -->
+<!-- ``` -->
+<!-- julia --project=~/.julia/environments/nvim-lspconfig -e 'using Pkg; Pkg.add("LanguageServer")' -->
+<!-- ``` -->
+<!-- This installs the Language Server Protocol (LSP) for Julia, i.e. the auto-completion functionally for Julia. Now, every time you open a ".jl" file, just wait a bit and the LSP will start. -->
 
-Since Vim is inside your terminal, you need your terminal to have a font with Unicode enabled. I suggest you install JuliaMono, a beautiful font created for Julia :D. Once the font is installed, just go into your terminal configuration and change to it.
+<!-- Next, let's install the Julia-Vim package that will enable us using Unicode, thus, by writing something like \alpha and pressing tab, we'll get the alpha Unicode, which is allowed in Julia. To do this, go to your LunarVim configurations file, which can be accessed by running lvim in the terminal and selecting the Configuration option. Another way is to open the configuration file directly, which is ~/.config/lvim/config.lua . -->
 
-Even with Unicode font enabled, in my notebook, the Julia-Vim was still freezing after pressing Tab without any text. To solve this issue, I wrote the following two commands in my LunarVim configuration:
+<!-- Inside the configuration, there is a place where you can easily install any plugin you want. Just navigate to where the "- - Additional Plugins" is. Originally, everything should be commented. Just uncomment the necessary lines, and write {"JuliaEditorSupport/julia-vim"} and save. This will prompt the installation of the plugging. Take a look at the figure below. -->
 
-```
-vim.cmd("let g:latex_to_unicode_tab = 'off'")
-vim.cmd("let g:latex_to_unicode_keymap = 1")
-```
-![LunarVim](./figures/configlunar2.png)
 
-Screenshot of my own configuration file.Now everything should be working beautifully!
-**Your new LunarVim IDE for Julia is ready to be used.**
+<!-- ![LunarVim](./figures/configlunar.png) -->
+
+<!-- This is what your configuration should look like to install Julia-Vim. Note that you can add any other plugins you like. -->
+
+<!-- (*update for new LunarVim 0.6*) -->
+
+<!-- Finally, you have to create a file `~/.config/lvim/ftplugin/julia.lua` with the following line to start the language server when opening Julia files. -->
+<!-- ```lua -->
+<!-- local opts = {}  -->
+<!-- -- re-use common lsp configurations (keybindings, buffer-highlight and cmp integration) -->
+<!-- opts = require("lvim.lsp").get_common_opts()  -->
+<!-- require('lspconfig').julials.setup(opts) -->
+<!-- ``` -->
+
+<!-- **Word of Caution!** -->
+
+<!-- Since Vim is inside your terminal, you need your terminal to have a font with Unicode enabled. I suggest you install JuliaMono, a beautiful font created for Julia :D. Once the font is installed, just go into your terminal configuration and change to it. -->
+
+<!-- Even with Unicode font enabled, in my notebook, the Julia-Vim was still freezing after pressing Tab without any text. To solve this issue, I wrote the following two commands in my LunarVim configuration: -->
+
+<!-- ``` -->
+<!-- vim.cmd("let g:latex_to_unicode_tab = 'off'") -->
+<!-- vim.cmd("let g:latex_to_unicode_keymap = 1") -->
+<!-- ``` -->
+<!-- ![LunarVim](./figures/configlunar2.png) -->
+
+<!-- Screenshot of my own configuration file.Now everything should be working beautifully! -->
+<!-- **Your new LunarVim IDE for Julia is ready to be used.** -->
 
 ---
 
